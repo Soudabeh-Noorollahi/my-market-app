@@ -1,17 +1,10 @@
-import mymarket from "./assets/logo/mymarket.svg"
+import AuthPage from "./pages/AuthPage";
 
 function App() {
   return (
-    <div className="text-3xl text-blue-600 font-bold text-center mt-10">
-      Welcome to MyMarket App!
-
-      <img
-  src={mymarket}
-  alt="MyMarket Logo"
-  className="h-20 w-auto mx-auto mt-4"
-/>
-
-      
+    <div>
+      <h1> Welcome to MyMarket App! </h1>
+      <AuthPage />
     </div>
   );
 }
