@@ -14,10 +14,12 @@ function SendOtpForm({ mobile, setStep, setMobile }) {
 
   return (
     <form onSubmit={submitHandler}>
-      <p> ورود به حساب کاربری</p>
-      <span> قبل از ثبت آگهی، لطفا وارد حساب خود شوید.</span>
-      <label htmlFor="input">شماره موبایل خود را وارد کنید</label>
-
+      <p>Sign in to your account</p>
+      <span>
+        To use the features of this website, please enter your mobile number. A
+        verification code will be sent via SMS.
+      </span>
+      <label htmlFor="input">Enter your mobile number</label>
       <input
         type="text"
         id="input"
@@ -25,7 +27,7 @@ function SendOtpForm({ mobile, setStep, setMobile }) {
         value={mobile}
         onChange={(e) => setMobile(e.target.value)}
       />
-      <button type="submit"> ارسال کد تایید</button>
+      <button type="submit">Verify</button>{" "}
     </form>
   );
 }
