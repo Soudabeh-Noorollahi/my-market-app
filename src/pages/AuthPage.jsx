@@ -16,8 +16,8 @@ function AuthPage() {
       {step === 2 && (
         <CheckOtpForm
           code={code}
-          mobile={mobile}
           setCode={setCode}
+          mobile={mobile}
           setStep={setStep}
         />
       )}
