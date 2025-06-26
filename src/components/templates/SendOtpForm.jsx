@@ -9,7 +9,6 @@ function SendOtpForm({ mobile, setStep, setMobile }) {
 
     if (response) setStep(2);
     if (error) console.log(error.response.data.message);
-    console.log({ response, error });
   };
 
   return (
