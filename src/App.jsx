@@ -1,12 +1,10 @@
-import AuthPage from "./pages/AuthPage";
+import { BrowserRouter} from "react-router-dom";
+import Router from "@/router/Router";
 
 function App() {
-  return (
-    <div>
-      <h1> Welcome to MyMarket App! </h1>
-      <AuthPage />
-    </div>
-  );
+  return <BrowserRouter>
+  <Router/>
+  </BrowserRouter>;
 }
 
 export default App;
