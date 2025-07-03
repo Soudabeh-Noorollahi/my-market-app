@@ -1,34 +1,5 @@
-// import React, { useState } from "react";
-
-// function CategoryForm() {
-//   const [form, setForm] = useState({ name: "", slug: "", icon: "" });
-
-//   const changeHandler = (event) => {
-//     setForm({ ...form, [event.target.name]: event.target.value });
-//   };
-
-//   const submitHandler = (event) => {
-//     event.preventDefault();
-//     console.log(form);
-//   };
-
-//   return (
-//     <form onChange={changeHandler} onSubmit={submitHandler}>
-//       {" "}
-//       <h3>New Category</h3>
-//       <label htmlFor="name">Category Name</label>
-//       <input type="text" name="name" id="name" />
-//       <label htmlFor="slug">Slug</label>
-//       <input type="text" name="slug" id="slug" />
-//       <label htmlFor="icon">Icon</label>
-//       <input type="text" name="icon" id="icon" />
-//       <button type="submit">Create</button>
-//     </form>
-//   );
-// }
-
-// export default CategoryForm;
-
+import { addCategory } from "@/services/admin";
+import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
@@ -38,11 +9,13 @@ import { FaPlus } from "react-icons/fa";
 >
   <FaPlus className="w-4 h-4" />
   Add Category
-</button>
-
+</button>;
 
 function CategoryForm() {
   const [form, setForm] = useState({ name: "", slug: "", icon: "" });
+
+  const { mutate, isLoading, error, data } = useMutation(addCategory);
+  console.log({ isLoading, error, data });
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -50,7 +23,8 @@ function CategoryForm() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(form);
+    if (!form.name || !form.slug || !form.icon) return;
+    mutate(form);
   };
 
   return (
@@ -63,6 +37,12 @@ function CategoryForm() {
         Add New Category
         <span className="block h-1 bg-[#a62626] mt-1 rounded"></span>
       </h3>
+      {!!error && <p>{error.message} </p>}
+      {data?.status === 201 && (
+        <p className="text-green-700 bg-green-50 border border-green-200 rounded px-4 py-2 text-sm">
+          ✅ Category added successfully!
+        </p>
+      )}
 
       <div className="flex flex-col space-y-1">
         <label htmlFor="name" className="text-sm text-gray-700">
@@ -102,7 +82,14 @@ function CategoryForm() {
 
       <button
         type="submit"
-        className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primaryDark text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
+        disabled={isLoading}
+        className={`w-full flex items-center justify-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-200
+    ${
+      isLoading
+        ? "bg-primary opacity-50 cursor-not-allowed"
+        : "bg-primary hover:bg-primaryDark"
+    }
+  `}
       >
         <FaPlus className="w-4 h-4" />
         Add Category
