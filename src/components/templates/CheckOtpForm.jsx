@@ -163,7 +163,7 @@ function CheckOtpForm({ code, setCode, setStep, mobile }) {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white px-4">
+
       <form
         onSubmit={submitHandler}
         className="bg-white shadow-md rounded-2xl p-6 sm:p-8 w-full max-w-md space-y-6 border border-gray-100"
@@ -233,7 +233,7 @@ function CheckOtpForm({ code, setCode, setStep, mobile }) {
           Change mobile number
         </button>
       </form>
-    </div>
+    
   );
 }
 

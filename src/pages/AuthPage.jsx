@@ -9,7 +9,7 @@ function AuthPage() {
   const [code, setCode] = useState("");
 
   return (
-    <div>
+    <div className="flex  flex-1   items-center justify-center px-4 ">
       {step === 1 && (
         <SendOtpForm setStep={setStep} mobile={mobile} setMobile={setMobile} />
       )}
