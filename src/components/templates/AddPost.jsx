@@ -5,6 +5,11 @@ function AddPost() {
   const { data } = useQuery(["get-categories"], getCategory);
   console.log(data);
 
+  const addHandler = (event) => {
+    event.preventDefault();
+    console.log("sent");
+  };
+
   return (
     <form>
       <h3> Add an ad</h3>
@@ -24,6 +29,9 @@ function AddPost() {
           </option>
         ))}
       </select>
+      <label htmlFor="images"> Image</label>
+      <input type="file" name="images" id="images" />
+      <button onClick={addHandler}> Create</button>
     </form>
   );
 }
