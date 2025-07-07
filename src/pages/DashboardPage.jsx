@@ -1,10 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import AddPost from "@/components/templates/AddPost";
 
-function DashboardPage(props) {
-  return <div className="max-w-[1400px]  mx-auto px-4">DashboardPage</div>;
+// className="max-w-[1400px]  mx-auto px-4"
+function DashboardPage() {
+  return (
+    <div>
+      <AddPost />
+    </div>
+  );
 }
-
-DashboardPage.propTypes = {};
 
 export default DashboardPage;
