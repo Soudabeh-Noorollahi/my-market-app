@@ -4,7 +4,7 @@ import CategoryList from "@/components/templates/CategoryList";
 function AdminPage() {
   return (
     <div >
-     <CategoryList/>
+      <CategoryList />
       <CategoryForm />
     </div>
   );

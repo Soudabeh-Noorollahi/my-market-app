@@ -1,9 +1,5 @@
 import { addCategory } from "@/services/admin";
-import {
-  QueryClient,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
@@ -39,7 +35,7 @@ function CategoryForm() {
     <form
       onChange={changeHandler}
       onSubmit={submitHandler}
-      className="w-full max-w-md bg-white border border-gray-200 rounded shadow-sm p-6 space-y-4 mx-auto"
+      className="w-full max-w-md bg-white border border-gray-200 rounded shadow-sm p-6 space-y-4 mx-auto px-4 mt-8 mb-8"
     >
       <h3 className="text-lg font-semibold text-gray-800 mb-1 inline-block">
         Add New Category
