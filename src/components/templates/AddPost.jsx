@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { getCategory } from "@/services/admin";
 import { getCookie } from "@/utils/cookie";
@@ -33,7 +34,7 @@ function AddPost() {
     //create formData in dataBase for add image file
     const formData = new FormData();
     for (let i in form) {
-      formData.append(i , form[i]);
+      formData.append(i, form[i]);
     }
 
     const token = getCookie("accessToken");
@@ -44,8 +45,14 @@ function AddPost() {
           Authorization: `bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log(res);
+        toast.success("Post created successfully!");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("❌ Something went wrong!");
+      });
   };
 
   return (

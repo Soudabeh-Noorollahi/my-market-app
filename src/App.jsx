@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Router />
+        <Toaster position="top-center" reverseOrder={false}/>
         </Layout>
-        <Toaster position="top-center" />
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
