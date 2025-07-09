@@ -1,17 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCategory } from "@/services/admin";
+import { useState } from "react";
 
 function AddPost() {
+  const [form, setForm] = useState({
+    title: "",
+    content: "",
+    category: "",
+    city: "",
+    amount: null,
+    images: null,
+  });
+
   const { data } = useQuery(["get-categories"], getCategory);
-  console.log(data);
+
+  const changeHandler = (event) => {
+    const name = event.target.name;
+
+    if (name !== "images") {
+      setForm({ ...form, [name]: event.target.value });
+    } else {
+      setForm({ ...form, [name]: event.target.files[0] });
+    }
+  };
 
   const addHandler = (event) => {
     event.preventDefault();
-    console.log("sent");
+    console.log(form);
   };
 
   return (
-    <form>
+    <form onChange={changeHandler}>
       <h3> Add an ad</h3>
       <label htmlFor="titel"> titel</label>
       <input type="text" name="titel" id="titel" />
