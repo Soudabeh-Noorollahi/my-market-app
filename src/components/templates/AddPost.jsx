@@ -1,6 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getCategory } from "@/services/admin";
 import { useState } from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+import { getCategory } from "@/services/admin";
+import { getCookie } from "@/utils/cookie";
 
 function AddPost() {
   const [form, setForm] = useState({
@@ -8,7 +11,7 @@ function AddPost() {
     content: "",
     category: "",
     city: "",
-    amount: null,
+    amount: "",
     images: null,
   });
 
@@ -26,7 +29,23 @@ function AddPost() {
 
   const addHandler = (event) => {
     event.preventDefault();
-    console.log(form);
+
+    //create formData in dataBase for add image file
+    const formData = new FormData();
+    for (let i in form) {
+      formData.append(i , form[i]);
+    }
+
+    const token = getCookie("accessToken");
+    axios
+      .post(`${import.meta.env.VITE_BASE_URL}/post/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -74,7 +93,7 @@ function AddPost() {
           Price
         </label>
         <input
-          type="text"
+          type="number"
           name="amount"
           id="amount"
           className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary"
