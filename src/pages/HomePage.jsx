@@ -1,7 +1,13 @@
-import React from "react";
+import Main from "@/components/templates/Main";
+import Sidebar from "@/components/templates/Sidebar";
 
 function HomePage() {
-  return <div className="max-w-[1400px]  mx-auto px-4">HomePage</div>;
+  return (
+    <div className="flex">
+      <Sidebar />
+      <Main />
+    </div>
+  );
 }
 
 export default HomePage;
