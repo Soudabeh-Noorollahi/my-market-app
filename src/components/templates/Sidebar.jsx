@@ -1,6 +1,6 @@
 function Sidebar({ categories }) {
   return (
-    <aside className="w-full md:w-60 shrink-0 bg-white p-4 rounded-lg border-r border-gray-200 shadow-sm">
+    <aside className="w-full md:w-60 shrink-0 bg-white p-4 rounded-lg border-r border-gray-200 shadow-sm mt-2">
       {" "}
       <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">
         Categories
