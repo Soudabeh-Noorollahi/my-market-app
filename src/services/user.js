@@ -7,4 +7,7 @@ const getPosts = () => api.get("post/my");
 
 const getAllPosts = () => api.get(""); //localhost 3400
 
-export { getProfile, getPosts, getAllPosts };
+const deletePost = (id) => api.delete(`post/delete/${id}`);
+
+
+export { getProfile, getPosts, getAllPosts, deletePost };
