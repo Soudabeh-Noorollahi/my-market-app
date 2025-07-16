@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import UserDropdown from "@/components/modules/UserDropdown";
+import { getCookie } from "@/utils/cookie";
 
 function Header() {
+  // Check for the presence of the access token cookie
+  const isLoggedIn = !!getCookie("accessToken");
+
   return (
-    <header className="w-full border-b  bg-white shadow-sm">
+    <header className="w-full border-b bg-white shadow-sm">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 h-16">
         <div className="flex items-center gap-4">
           <Link to="/" className="flex items-center gap-2">
@@ -19,7 +24,7 @@ function Header() {
           </span>
         </div>
 
-        <div className="flex-1 px-8 max-w-[600px] ">
+        <div className="flex-1 px-8 max-w-[600px]">
           <div className="relative group">
             <input
               type="text"
@@ -31,13 +36,17 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-5">
-          <Link
-            to="/auth"
-            className="flex items-center gap-2 text-sm text-gray-700"
-          >
-            <img src="profile.svg" alt="Profile" className="w-4 h-4" />
-            <span>My Market</span>
-          </Link>
+          {isLoggedIn ? (
+            <UserDropdown />
+          ) : (
+            <Link
+              to="/auth"
+              className="flex items-center gap-2 text-sm text-gray-700"
+            >
+              <img src="profile.svg" alt="Profile" className="w-4 h-4" />
+              <span>Login</span>
+            </Link>
+          )}
 
           <Link to="/dashboard">
             <button className="bg-red-800 hover:bg-red-700 text-white text-sm font-semibold px-5 h-10 rounded-md border border-red-800 hover:border-red-700 shadow-sm transition-colors duration-200">
