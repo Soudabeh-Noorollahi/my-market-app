@@ -63,7 +63,8 @@ src/
 
 Here’s a preview of the My Market App interface:
 
-![My Market App Screenshot](./frontend/public/screenshots/mymarketapp.jpg)
+![My Market App Screenshot](public/screenshots/mymarketapp.JPG)
+
 
 ---
 
