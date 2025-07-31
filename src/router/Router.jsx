@@ -7,17 +7,19 @@ import AuthPage from "@/pages/AuthPage";
 import DashboardPage from "@/pages/DashboardPage";
 import PageNotFound from "@/pages/404";
 import Loader from "@/components/modules/Loader";
+import PostDetailsPage from "@/pages/PostDetailsPage";
 import { getProfile } from "@/services/user";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
   // console.log({ data, isLoading, error });
 
-  if (isLoading) return <Loader/>
+  if (isLoading) return <Loader />;
 
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/post/:id" element={<PostDetailsPage />} />
       <Route
         path="/dashboard"
         element={data ? <DashboardPage /> : <Navigate to="/auth" />}
