@@ -28,6 +28,7 @@
 - Cookie handling and token management with custom hooks
 
 📁 Organized into:
+
 ```
 src/
 ├── components/modules & templates
@@ -50,6 +51,7 @@ src/
 - Custom exception handling and middleware
 
 📁 Structure:
+
 ```
 src/
 ├── common/       (constants, guards, exceptions)
@@ -65,12 +67,21 @@ Here’s a preview of the My Market App interface:
 
 ![My Market App Screenshot](public/screenshots/mymarketapp.JPG)
 
+---
+
+## ⚙️ Technical Highlights
+
+- Implemented custom JWT + cookie auth flow with automatic token refresh
+- Configured dynamic image preview and upload via multer & FormData
+- Built reusable components for form validation and dropdowns
+- Used React Query to manage cache & reduce redundant API calls
 
 ---
 
 ## 📦 Setup Instructions
 
 ### 🧪 Frontend
+
 ```bash
 cd frontend
 npm install
@@ -78,6 +89,7 @@ npm run dev
 ```
 
 ### 🧪 Backend
+
 ```bash
 cd backend
 npm install
@@ -101,4 +113,4 @@ MIT – feel free to use and customize ✨
 
 ---
 
-**Made with 💚 and ☕ by Soudabeh Noorollahi**
+**Made with 💚 and ☕ by Soudabeh**
